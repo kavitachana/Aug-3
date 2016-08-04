@@ -3,46 +3,42 @@ package com.kavita.bowling;
 public class Bowling {
 
 	public static void main(String[] args) {
+
+		int pins = 10;
+		int frames = 10;
+
+		int[] rollOne = new int[11];
+		int[] rollTwo = new int[11];
+		int[] frameScore = new int[11];
+
+		int totalScore = 0;
+
+		for (int i = 1; i <= frames; i++) {
+
+			rollOne[i] = (int) ((Math.random() * pins));
+
+			if (rollOne[i] == 10) {
+
+				frameScore[i] = rollOne[i];
+			}
+
+			else {
+				
+				rollTwo[i] = (int) ((Math.random() * pins));
+
+				while (rollTwo[i] + rollOne[i] > 10) {
+
+					rollTwo[i] = (int) ((Math.random() * pins));
+				}
+
+			}
 		
-	int pins = 10;
-	int frames = 10;
-//	int throwsPerFrame = 2;
-	int rollOne;
-	int rollTwo;
-	int totalScore;
-	
-//	int[] firstRoll = new firstRoll[10];
-//	int[] secondRoll = [10];
-//	int[][] totalScore = [firstRoll][secondRoll];
-	
-			
-	for(int i = 1; i < frames; i++) {
-	
-		rollOne = (int) ((Math.random() * pins) + 1);
+		frameScore[i] = rollOne[i] + rollTwo[i];
+		totalScore += frameScore[i];
 		
-		totalScore = rollOne;
-		System.out.println("Roll One: " + totalScore);
-		
-		
-		if(rollOne > 10) {
-	
-		
-	for(int j = 1; j < frames; j++) {
-			rollTwo = (int) ((Math.random() * pins) + 1);
-			totalScore =+ rollTwo;
-			System.out.println("Roll Two: " + totalScore);
-	}
+		System.out.println("Frame " + i + " Score: " +frameScore[i] );
 		}
 		
-	
-//	if(pinsDown == 10) {
-//		break;
+		System.out.println("\nGame Score: " + totalScore);
 	}
-	
-	
-//	System.out.println("You knocked down " + pinsDown + " pins");
-	}
-	
-	
-		
-	}
+}
